@@ -1,1 +1,16 @@
-<p>databinding-properties works!</p>
+<h1>Bài thực hành Data Binding Properties</h1>
+<h3> 2 thằng cu con bố Thao</h3>
+<input value={{name2}} title = "đây là {{name2}}">
+<br>
+<input [value] = "name" [title] = "'đây là' + name">
+<br>
+<p>-----------------------------------------------</p>
+<input type ="number" [(ngModel)] = "age"/>
+<h2 *ngIf = " age > 18 ">Bạn quá già rồi</h2>
+<h2 *ngIf = " age <= 18" >Bạn còn trẻ quá</h2>
+<button (click) = "resetname()">Click Here</button>
+<p>--------------------------------------------</p>
+<br>
+<input type = "text" [(ngModel)] = "name"/>
+<h2>Tên của bạn là {{name}}</h2>
+<button (click) = "resetname()">Reset Name</button>
