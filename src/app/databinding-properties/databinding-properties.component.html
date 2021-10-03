@@ -1,16 +1,49 @@
-<h1>Bài thực hành Data Binding Properties</h1>
-<h3> 2 thằng cu con bố Thao</h3>
-<input value={{name2}} title = "đây là {{name2}}">
-<br>
-<input [value] = "name" [title] = "'đây là' + name">
-<br>
+<h2>Bài thực hành Data Binding Properties</h2>
+<h3>2 thằng cu con bố Thao</h3>
+<input value="{{ name2 }}" title="đây là {{ name2 }}" />
+<br />
+<input [value]="name" [title]="'đây là' + name" />
+<br />
+
 <p>-----------------------------------------------</p>
-<input type ="number" [(ngModel)] = "age"/>
-<h2 *ngIf = " age > 18 ">Bạn quá già rồi</h2>
-<h2 *ngIf = " age <= 18" >Bạn còn trẻ quá</h2>
-<button (click) = "resetname()">Click Here</button>
+
+<p>Tạo ô input style Number, nhập vào số tuổi, > 18 tuổi là già</p>
+<input title="Tuổi của bạn là" type="number" [(ngModel)]="age" />
+<h3 *ngIf="age > 18">Bạn quá già rồi</h3>
+<h3 *ngIf="age <= 18">Bạn còn trẻ quá</h3>
 <p>--------------------------------------------</p>
-<br>
-<input type = "text" [(ngModel)] = "name"/>
-<h2>Tên của bạn là {{name}}</h2>
-<button (click) = "resetname()">Reset Name</button>
+<p>Tạo ô Input, nội dung được in ra trong thẻ text bên dưới, kèm nút reset</p>
+<input type="text" [(ngModel)]="name" />
+<h3>Tên của bạn là {{ name }}</h3>
+<button (click)="resetname()">Reset Name</button>
+
+<p>-----------------------------------------------</p>
+
+<p>ng - template</p>
+<input type="text" [(ngModel)]="age" />
+<div *ngIf="age <= 18; then tre; else gia"></div>
+<ng-template #tre><h3>Bạn còn trẻ</h3></ng-template>
+<ng-template #gia><h3>Bạn đã già</h3></ng-template>
+
+<p>----------In ra danh sách trái cây dùng vòng lặp *ngFor----------</p>
+
+<h3>Danh sách các loại trái cây</h3>
+<div *ngFor="let trai of traiCay; let i = index">
+  <li>{{ i + 1 }}, {{ trai }}</li>
+</div>
+<p>----------Tạo bảng----------</p>
+
+<table class="hoa_qua">
+  <tr>
+    <th>Thứ Tự</th>
+    <th>Tên</th>
+    <th>Giá</th>
+  </tr>
+  <tr *ngFor="let trai of traiCay2; let i = index">
+    <td>{{ i + 1 }}</td>
+    <td>{{ trai.ten }}</td>
+    <td>
+      <span [ngClass]="{ 'so-am': trai.gia < 0 }">{{ trai.gia }}</span>
+    </td>
+  </tr>
+</table>
